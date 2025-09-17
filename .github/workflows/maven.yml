@@ -1,0 +1,33 @@
+name: JMeter Test Run
+ 
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+ 
+jobs:
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 24
+      uses: actions/setup-java@v4
+      with:
+        java-version: '24'
+        distribution: 'temurin'
+     
+    - name: Run JMeter tests
+      run: mvn clean verify
+ 
+- name: JMeter Test Report Generation
+  uses: actions/upload-artifact@v4
+  if: success() || failure()             # Ensures the step runs regardless of job result
+  with:
+    name: JMeter Report                  # The name of the artifact
+    path:                                # Multiple folders to upload
+      - target/jmeter/reports/SOAP_Request
+      - target/jmeter/reports/API_Performance_Testing
+      - target/jmeter/logs
