@@ -31,10 +31,3 @@ jobs:
           path: |
             target/jmeter/reports/SOAP_Request 
             target/jmeter/reports/API_Performance_Testing
-            target/jmeter/reports/BookingApp_T10
-            target/jmeter/reports/BookingApp_T100
-            target/jmeter/reports/BookingApp_T500
-            target/jmeter/reports/BookingApp_T1000
-            target/jmeter/reports/BookingApp_T1300
-            target/jmeter/reports/BookingApp_T1400
-            target/jmeter/reports/BookingApp_T1500
